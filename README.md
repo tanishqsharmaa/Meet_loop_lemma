@@ -66,4 +66,4 @@ lemma apps deploy --pod meetloop -y meetloop_dashboard ./index.html
 The dashboard is built strictly without templated "AI slop". It utilizes an OLED-optimized Dark Mode, high-contrast UI tokens, native `Geist` typography, and smooth micro-animations. It is designed to feel like a premium, state-of-the-art enterprise tool.
 
 ---
-*Built with ❤️ for the Gappy AI Hackathon.*
+*Built with Lemma for the Gappy AI Hackathon.*
