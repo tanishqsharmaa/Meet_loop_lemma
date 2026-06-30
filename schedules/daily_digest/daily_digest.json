@@ -1,0 +1,7 @@
+{
+  "name": "daily_digest",
+  "schedule_type": "TIME",
+  "config": { "cron": "0 9 * * 1-5" },
+  "workflow_name": "daily-digest-workflow",
+  "is_active": true
+}

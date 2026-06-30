@@ -1,0 +1,6 @@
+{
+  "action_items": [
+    {"id": "item-a-002", "description": "Priya will finalize the design mockups", "owner": "Priya", "deadline": "2026-07-03"},
+    {"id": "item-b-002", "description": "Karan will prepare the marketing assets", "owner": "Karan", "deadline": "2026-07-06"}
+  ]
+}

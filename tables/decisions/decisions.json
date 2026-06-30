@@ -1,0 +1,16 @@
+{
+  "name": "decisions",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "visibility": "POD",
+  "columns": [
+    { "name": "meeting_id", "type": "UUID", "required": false,
+      "foreign_key": { "references": "meetings.id" } },
+    { "name": "description", "type": "TEXT", "required": true },
+    { "name": "rationale", "type": "TEXT", "required": false },
+    { "name": "decided_by", "type": "TEXT", "required": false },
+    { "name": "status", "type": "ENUM", "required": true, "default": "active",
+      "options": ["active", "superseded", "under_review"] }
+  ],
+  "config": {}
+}

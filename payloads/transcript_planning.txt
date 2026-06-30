@@ -1,0 +1,9 @@
+Sprint Planning — July 1, 2026
+
+Arjun: This sprint we need to ship the payments integration. Rahul will lead the frontend work, targeting July 7. I'll handle the backend API by July 5.
+
+Priya: We've decided to use Stripe for payments — better docs and webhook support. Sneha, can you set up the test environment by July 3?
+
+Sneha: Yes, I'll have the test environment ready by July 3.
+
+Karan: I need the payments feature live before I can start the partner onboarding campaign. Will begin campaign prep once Arjun ships the backend.

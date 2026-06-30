@@ -1,0 +1,46 @@
+{
+  "agent_runtime": {
+    "profile_id": "system:lemma"
+  },
+  "description": "Sends a Slack DM to each action item owner and flips their status from pending_review to active.",
+  "icon_url": null,
+  "input_schema": null,
+  "instruction": {
+    "$file": "instruction.md"
+  },
+  "metadata": null,
+  "name": "owner-notifier-agent",
+  "output_schema": null,
+  "permissions": {
+    "grants": [
+      {
+        "permission_ids": [
+          "connector.use"
+        ],
+        "resource_name": "slack",
+        "resource_type": "connector"
+      },
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.table.read"
+        ],
+        "resource_name": "meetings",
+        "resource_type": "datastore_table"
+      },
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.record.write",
+          "datastore.table.read"
+        ],
+        "resource_name": "action_items",
+        "resource_type": "datastore_table"
+      }
+    ]
+  },
+  "toolsets": [
+    "POD"
+  ],
+  "visibility": "POD"
+}

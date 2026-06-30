@@ -1,0 +1,25 @@
+{
+  "name": "action-extractor-agent",
+  "description": "Extracts structured action items and decisions from a meeting transcript, writes them to action_items and decisions tables, and returns a summary.",
+  "instruction": { "$file": "instruction.md" },
+  "toolsets": ["POD"],
+  "visibility": "POD",
+  "agent_runtime": { "profile_id": "system:lemma" },
+  "permissions": { "grants": [
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "meetings",
+      "permission_ids": ["datastore.table.read", "datastore.record.read"]
+    },
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "action_items",
+      "permission_ids": ["datastore.table.read", "datastore.record.read", "datastore.record.write"]
+    },
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "decisions",
+      "permission_ids": ["datastore.table.read", "datastore.record.read", "datastore.record.write"]
+    }
+  ] }
+}

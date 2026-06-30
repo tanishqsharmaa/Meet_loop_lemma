@@ -1,0 +1,6 @@
+{
+  "action_items": [
+    {"id": "a068b485-16ea-4bd1-b055-f8efa3ae7a28", "description": "Arjun will complete the API refactor", "owner": "Arjun", "deadline": "2026-07-04"},
+    {"id": "5f7d614c-56e4-4ffd-8a25-1380dda7b153", "description": "Rahul will start frontend after arjun completes the API", "owner": "Rahul", "deadline": "2026-07-07"}
+  ]
+}

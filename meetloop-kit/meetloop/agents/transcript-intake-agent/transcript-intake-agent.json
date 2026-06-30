@@ -1,0 +1,31 @@
+{
+  "agent_runtime": {
+    "profile_id": "system:lemma"
+  },
+  "description": "Classifies a meeting transcript, extracts metadata, writes a meetings row, and returns the meeting_id for downstream agents.",
+  "icon_url": null,
+  "input_schema": null,
+  "instruction": {
+    "$file": "instruction.md"
+  },
+  "metadata": null,
+  "name": "transcript-intake-agent",
+  "output_schema": null,
+  "permissions": {
+    "grants": [
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.record.write",
+          "datastore.table.read"
+        ],
+        "resource_name": "meetings",
+        "resource_type": "datastore_table"
+      }
+    ]
+  },
+  "toolsets": [
+    "POD"
+  ],
+  "visibility": "POD"
+}

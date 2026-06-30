@@ -1,0 +1,82 @@
+{
+  "agent_runtime": {
+    "profile_id": "system:lemma"
+  },
+  "description": "Answers natural-language questions about past decisions, action items, and meetings from MeetLoop's structured data.",
+  "icon_url": null,
+  "input_schema": null,
+  "instruction": {
+    "$file": "instruction.md"
+  },
+  "metadata": null,
+  "name": "memory-agent",
+  "output_schema": {
+    "properties": {
+      "answer": {
+        "type": "string"
+      },
+      "confidence": {
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "type": "string"
+      },
+      "sources": {
+        "items": {
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "meeting_title": {
+              "type": "string"
+            },
+            "table": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "answer",
+      "confidence"
+    ],
+    "type": "object"
+  },
+  "permissions": {
+    "grants": [
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.table.read"
+        ],
+        "resource_name": "meetings",
+        "resource_type": "datastore_table"
+      },
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.table.read"
+        ],
+        "resource_name": "action_items",
+        "resource_type": "datastore_table"
+      },
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.table.read"
+        ],
+        "resource_name": "decisions",
+        "resource_type": "datastore_table"
+      }
+    ]
+  },
+  "toolsets": [
+    "POD"
+  ],
+  "visibility": "POD"
+}

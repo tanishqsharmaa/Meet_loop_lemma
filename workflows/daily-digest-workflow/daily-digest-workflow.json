@@ -1,0 +1,23 @@
+{
+  "name": "daily-digest-workflow",
+  "description": "Runs daily at 9am. Prompts the digest-composer-agent to compile the daily execution digest and post it to Slack.",
+  "start": { "type": "SCHEDULED", "config": { "schedule_type": "CRON" } },
+  "nodes": [
+    {
+      "id": "compose_digest",
+      "type": "AGENT",
+      "label": "Compose Digest",
+      "config": {
+        "agent_name": "digest-composer-agent",
+        "input_mapping": {
+          "prompt": { "type": "literal", "value": "Compose and post the daily digest now." }
+        }
+      }
+    },
+    { "id": "end", "type": "END", "label": "Done" }
+  ],
+  "edges": [
+    { "id": "e1", "source": "compose_digest", "target": "end" }
+  ],
+  "visibility": "POD"
+}

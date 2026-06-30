@@ -1,0 +1,22 @@
+{
+  "name": "action_items",
+  "primary_key_column": "id",
+  "enable_rls": true,
+  "visibility": "POD",
+  "columns": [
+    { "name": "meeting_id", "type": "UUID", "required": false,
+      "foreign_key": { "references": "meetings.id" } },
+    { "name": "description", "type": "TEXT", "required": true },
+    { "name": "owner", "type": "TEXT", "required": false },
+    { "name": "owner_slack_handle", "type": "TEXT", "required": false },
+    { "name": "deadline", "type": "DATE", "required": false },
+    { "name": "priority", "type": "ENUM", "required": false, "default": "P3",
+      "options": ["P1", "P2", "P3"] },
+    { "name": "commitment_confidence_score", "type": "INTEGER", "required": false },
+    { "name": "status", "type": "ENUM", "required": true, "default": "pending_review",
+      "options": ["pending_review", "active", "in_progress", "done", "blocked", "cancelled"] },
+    { "name": "dm_sent", "type": "BOOLEAN", "required": false, "default": false },
+    { "name": "dm_sent_at", "type": "DATETIME", "required": false }
+  ],
+  "config": {}
+}

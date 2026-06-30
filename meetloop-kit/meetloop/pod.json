@@ -1,0 +1,15 @@
+{
+  "contents": {},
+  "description": "AI Meeting to Execution Operator",
+  "format_version": 2,
+  "icon_url": null,
+  "name": "meetloop",
+  "variables": {
+    "slack_account": {
+      "description": "Connector account for the slack surface",
+      "platform": "slack",
+      "source_value": "019f1a38-33ff-7227-b5f3-1f6e4f9ef23b",
+      "type": "account"
+    }
+  }
+}

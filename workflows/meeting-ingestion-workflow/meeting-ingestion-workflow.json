@@ -1,0 +1,135 @@
+{
+  "name": "meeting-ingestion-workflow",
+  "description": "7-step pipeline: transcript -> agent extraction -> ccs -> linker -> approval gate -> activate -> owner DMs.",
+  "start": { "type": "MANUAL" },
+  "nodes": [
+    {
+      "id": "intake",
+      "type": "FORM",
+      "label": "Ingestion Intake",
+      "config": {
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "meeting_id": { "type": "string" },
+            "transcript": { "type": "string" }
+          },
+          "required": ["meeting_id", "transcript"]
+        }
+      }
+    },
+    {
+      "id": "extract",
+      "type": "AGENT",
+      "label": "Extract Tasks",
+      "config": {
+        "agent_name": "action-extractor-agent",
+        "input_mapping": {
+          "meeting_id": { "type": "expression", "value": "intake.meeting_id" },
+          "transcript": { "type": "expression", "value": "intake.transcript" }
+        }
+      }
+    },
+    {
+      "id": "ccs",
+      "type": "FUNCTION",
+      "label": "Score CCS",
+      "config": {
+        "function_name": "commitment_confidence_score",
+        "input_mapping": {
+          "meeting_id": { "type": "expression", "value": "intake.meeting_id" }
+        }
+      }
+    },
+    {
+      "id": "linker",
+      "type": "FUNCTION",
+      "label": "Link Dependencies",
+      "config": {
+        "function_name": "dependency_linker",
+        "input_mapping": {
+          "meeting_id": { "type": "expression", "value": "intake.meeting_id" }
+        }
+      }
+    },
+    {
+      "id": "ccs_check",
+      "type": "DECISION",
+      "label": "Low Confidence?",
+      "config": {
+        "rules": [
+          { "condition": "ccs.needs_approval == `true`", "next_node_id": "approval" }
+        ]
+      }
+    },
+    {
+      "id": "approval",
+      "type": "FORM",
+      "label": "Founder Approval",
+      "config": {
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "approved": { "type": "boolean" },
+            "notes": { "type": "string" }
+          },
+          "required": ["approved"]
+        }
+      }
+    },
+    {
+      "id": "approval_route",
+      "type": "DECISION",
+      "label": "Approved?",
+      "config": {
+        "rules": [
+          { "condition": "approval.approved == `true`", "next_node_id": "activate" }
+        ]
+      }
+    },
+    {
+      "id": "activate",
+      "type": "FUNCTION",
+      "label": "Activate Items",
+      "config": {
+        "function_name": "activate_action_items",
+        "input_mapping": {
+          "meeting_id": { "type": "expression", "value": "intake.meeting_id" }
+        }
+      }
+    },
+    {
+      "id": "notify",
+      "type": "AGENT",
+      "label": "DM Owners",
+      "config": {
+        "agent_name": "owner-notifier-agent",
+        "input_mapping": {
+          "meeting_id": { "type": "expression", "value": "intake.meeting_id" }
+        }
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "label": "Done"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "intake", "target": "extract" },
+    { "id": "e2", "source": "extract", "target": "ccs" },
+    { "id": "e3", "source": "ccs", "target": "linker" },
+    { "id": "e4", "source": "linker", "target": "ccs_check" },
+    
+    { "id": "e_ccs_default", "source": "ccs_check", "target": "activate", "label": "No review needed" },
+    { "id": "e_ccs_rule", "source": "ccs_check", "target": "approval", "label": "Needs review" },
+    
+    { "id": "e_route_default", "source": "approval_route", "target": "end", "label": "Dismissed" },
+    { "id": "e_route_rule", "source": "approval_route", "target": "activate", "label": "Approved" },
+    
+    { "id": "e7", "source": "approval", "target": "approval_route" },
+    { "id": "e8", "source": "activate", "target": "notify" },
+    { "id": "e9", "source": "notify", "target": "end" }
+  ],
+  "visibility": "POD"
+}

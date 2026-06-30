@@ -1,0 +1,1 @@
+{"meeting_id": "035eccd8-4121-4f97-8beb-a9fcc3508e01", "description": "We will use PostgreSQL for the data layer", "rationale": "Better RLS support and JSON operators", "decided_by": "Arjun", "status": "active"}

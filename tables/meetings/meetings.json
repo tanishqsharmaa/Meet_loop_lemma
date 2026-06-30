@@ -1,0 +1,16 @@
+{
+  "name": "meetings",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "visibility": "POD",
+  "columns": [
+    { "name": "title", "type": "TEXT", "required": true, "max_length": 500 },
+    { "name": "meeting_date", "type": "DATE", "required": false },
+    { "name": "meeting_type", "type": "ENUM", "required": true, "default": "other",
+      "options": ["standup", "planning", "client_call", "design_review", "other"] },
+    { "name": "participants", "type": "JSON", "required": false },
+    { "name": "transcript_raw", "type": "TEXT", "required": false },
+    { "name": "summary", "type": "TEXT", "required": false }
+  ],
+  "config": {}
+}

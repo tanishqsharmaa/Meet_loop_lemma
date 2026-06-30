@@ -1,0 +1,7 @@
+{
+  "action_items": [
+    {"id": "a068b485-16ea-4bd1-b055-f8efa3ae7a28", "description": "Arjun will complete the API", "owner": "Arjun", "deadline": "2026-07-04"},
+    {"id": "5f7d614c-56e4-4ffd-8a25-1380dda7b153", "description": "Rahul will build the frontend once arjun completes the API", "owner": "Rahul", "deadline": "2026-07-07"},
+    {"id": "4093e0a3-c4a9-49b2-b8a7-58a521b45bfb", "description": "Sneha will do QA after rahul ships the frontend", "owner": "Sneha", "deadline": "2026-07-10"}
+  ]
+}

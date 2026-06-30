@@ -1,0 +1,15 @@
+{
+  "name": "transcript-intake-agent",
+  "description": "Classifies a meeting transcript, extracts metadata, writes a meetings row, and returns the meeting_id for downstream agents.",
+  "instruction": { "$file": "instruction.md" },
+  "toolsets": ["POD"],
+  "visibility": "POD",
+  "agent_runtime": { "profile_id": "system:lemma" },
+  "permissions": { "grants": [
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "meetings",
+      "permission_ids": ["datastore.table.read", "datastore.record.read", "datastore.record.write"]
+    }
+  ] }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "activate_action_items",
+  "description": "Bulk updates all action items for a given meeting_id from pending_review to active.",
+  "type": "API",
+  "visibility": "POD",
+  "code": { "$file": "code.py" },
+  "permissions": { "grants": [
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "action_items",
+      "permission_ids": ["datastore.table.read", "datastore.record.read", "datastore.record.write"]
+    }
+  ] }
+}

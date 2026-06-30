@@ -1,0 +1,34 @@
+{
+  "code": {
+    "$file": "code.py"
+  },
+  "code_hash": "ada150e639bf80460b352f82e75670accd3562f73acc44cd4574cb3fa805b266",
+  "config": null,
+  "description": "Detects cross-task dependencies from action item descriptions using keyword matching. Writes blocker rows to the blockers table for same-owner and cross-owner dependencies where the upstream owner's name appears in the description.",
+  "icon_url": null,
+  "name": "dependency_linker",
+  "permissions": {
+    "grants": [
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.table.read"
+        ],
+        "resource_name": "action_items",
+        "resource_type": "datastore_table"
+      },
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.record.write",
+          "datastore.table.read"
+        ],
+        "resource_name": "blockers",
+        "resource_type": "datastore_table"
+      }
+    ]
+  },
+  "python_packages": [],
+  "type": "API",
+  "visibility": "POD"
+}

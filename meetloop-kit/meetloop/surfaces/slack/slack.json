@@ -1,0 +1,16 @@
+{
+  "account_id": "${slack_account}",
+  "config": {
+    "channels": [
+      {
+        "agent_name": "transcript-intake-agent",
+        "channel_id": "C0BE3CGF5TM"
+      }
+    ]
+  },
+  "credential_mode": "CUSTOM",
+  "default_agent_name": "transcript-intake-agent",
+  "is_enabled": true,
+  "name": "slack",
+  "platform": "SLACK"
+}

@@ -1,0 +1,9 @@
+Standup — June 30, 2026
+
+Arjun: Yesterday I finished the auth middleware. Today I will complete the API refactor and push it to staging. No blockers.
+
+Rahul: I've been working on the frontend components. Will start the dashboard integration once Arjun completes the API. Blocked on that.
+
+Sneha: Did QA on last week's release. Will set up the CI pipeline today. No blockers.
+
+Priya: Reviewed the design mockups with the client. Karan will prepare the marketing assets by July 6. We agreed to launch the beta on July 15.

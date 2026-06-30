@@ -1,0 +1,19 @@
+{
+  "name": "dependency_linker",
+  "description": "Detects cross-task dependencies from action item descriptions using keyword matching. Writes blocker rows to the blockers table for same-owner and cross-owner dependencies where the upstream owner's name appears in the description.",
+  "type": "API",
+  "visibility": "POD",
+  "code": { "$file": "code.py" },
+  "permissions": { "grants": [
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "action_items",
+      "permission_ids": ["datastore.table.read", "datastore.record.read"]
+    },
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "blockers",
+      "permission_ids": ["datastore.table.read", "datastore.record.read", "datastore.record.write"]
+    }
+  ] }
+}

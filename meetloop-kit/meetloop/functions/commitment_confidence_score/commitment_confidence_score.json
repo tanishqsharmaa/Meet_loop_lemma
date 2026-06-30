@@ -1,0 +1,26 @@
+{
+  "code": {
+    "$file": "code.py"
+  },
+  "code_hash": "09a4551e0ed7ced0b7ee3f65f8d74a6484ebbefe24b46fc391474a21d6329c6b",
+  "config": null,
+  "description": "Scores each action item 0-100 based on language certainty, owner clarity, and deadline presence. Items scoring < 50 are routed to human approval before activation.",
+  "icon_url": null,
+  "name": "commitment_confidence_score",
+  "permissions": {
+    "grants": [
+      {
+        "permission_ids": [
+          "datastore.record.read",
+          "datastore.record.write",
+          "datastore.table.read"
+        ],
+        "resource_name": "action_items",
+        "resource_type": "datastore_table"
+      }
+    ]
+  },
+  "python_packages": [],
+  "type": "API",
+  "visibility": "POD"
+}

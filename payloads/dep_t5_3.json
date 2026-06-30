@@ -1,0 +1,6 @@
+{
+  "action_items": [
+    {"id": "item-a-003", "description": "Sneha will set up CI pipeline", "owner": "Sneha", "deadline": "2026-07-03"},
+    {"id": "item-b-003", "description": "Karan depends on getting the product brief done", "owner": "Karan", "deadline": "2026-07-06"}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "digest-composer-agent",
+  "description": "Composes the daily 9 AM MeetLoop digest from active action items and decisions, then posts to #meetloop-daily.",
+  "instruction": { "$file": "instruction.md" },
+  "toolsets": ["POD"],
+  "visibility": "POD",
+  "agent_runtime": { "profile_id": "system:lemma" },
+  "permissions": { "grants": [
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "action_items",
+      "permission_ids": ["datastore.table.read", "datastore.record.read"]
+    },
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "decisions",
+      "permission_ids": ["datastore.table.read", "datastore.record.read"]
+    },
+    {
+      "resource_type": "datastore_table",
+      "resource_name": "meetings",
+      "permission_ids": ["datastore.table.read", "datastore.record.read"]
+    },
+    {
+      "resource_type": "connector",
+      "resource_name": "slack",
+      "permission_ids": ["connector.use"]
+    }
+  ] }
+}

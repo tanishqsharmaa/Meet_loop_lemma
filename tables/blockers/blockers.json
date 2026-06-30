@@ -1,0 +1,15 @@
+{
+  "name": "blockers",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "visibility": "POD",
+  "columns": [
+    { "name": "blocking_item_id", "type": "UUID", "required": true,
+      "foreign_key": { "references": "action_items.id" } },
+    { "name": "blocked_item_id", "type": "UUID", "required": true,
+      "foreign_key": { "references": "action_items.id" } },
+    { "name": "detected_at", "type": "DATETIME", "required": false },
+    { "name": "resolved_at", "type": "DATETIME", "required": false }
+  ],
+  "config": {}
+}

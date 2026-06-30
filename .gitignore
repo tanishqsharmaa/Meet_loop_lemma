@@ -1,0 +1,40 @@
+# Ignore all Markdown files (Research, proposals, AGENTS.md, etc.)
+*.md
+# ...but explicitly allow the README and project_proposal
+!README.md
+!project_proposal.md
+
+# Ignore all pictures/images
+*.png
+*.jpg
+*.jpeg
+*.gif
+# (Optional) Allow Vite's default SVG/ICO if needed for the app to build, but ignoring loose images
+!dashboard/public/*.svg
+!dashboard/public/*.ico
+
+# Ignore agent context folders
+.agents/
+
+# Dependency directories
+node_modules/
+dashboard/node_modules/
+
+# Build outputs
+dashboard/dist/
+
+# Environment files
+.env
+.env.local
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Ignore bin directory
+bin/
